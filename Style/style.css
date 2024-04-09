@@ -3,6 +3,11 @@
     src: url(./../Fonts/Prime-Regular.ttf);
 }
 
+@font-face {
+    font-family: Nexa-Heavy;
+    src: url(./../Fonts/Nexa-Heavy.ttf);
+}
+
 @keyframes flyInTop {
     from {
         transform: translateY(-50vh);
@@ -23,6 +28,15 @@ https://colorhunt.co/palette/8cb9bdfefbf6ecb159b67352*/
 body {
     background-color: #8CB9BD;
     margin: 0%;
+    font-family: Nexa-Heavy;
+}
+
+input {
+    font-family: Nexa-Heavy;
+}
+
+.flex {
+    display: flex;
 }
 
 .title-box {
@@ -73,7 +87,9 @@ body {
 }
 
 .login-button {
+    /*font-family: Nexa-Heavy;*/
     position: relative;
+    text-align: center;
     width: 15%;
     height: 45px;
     font-size: 200%;
@@ -133,3 +149,133 @@ body {
     }
 }
 /*TITLE ANIMATION END*/
+
+/*RESTAURANTS.PHP*/
+.restaurant-box-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.restaurant-box {
+    background-color: rgba(0, 0, 0, 0.547);
+    width: 60vw;
+    height: 30vh;
+    margin: 2vw;
+    display: flex;
+    position: relative;
+    transform: scale(100%);
+    transition: all 0.3s ease-out;
+}
+
+.restaurant-box:hover {
+    cursor: pointer;
+    transform: scale(105%);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.restaurant-title {
+    color: white;
+    font-size: 200%;
+    
+}
+
+.restaurant-flex-left {
+    width: 20%;
+}
+
+.restaurant-flex-middle {
+    width: 55%;
+    margin-left: 5%;
+}
+
+.restaurant-flex-right {
+    width: 20%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.restaurant-img {
+    margin: 5%;
+}
+
+.restaurant-rating {
+    margin-top: 0%;
+    color: yellow;
+    font-size: 200%;
+}
+
+.restaurant-food-type {
+    color: white;
+    font-size: 150%;
+}
+
+.restaurant-delivery-time {
+    color: white;
+    font-size: 200%;
+    margin: 0px;
+    padding: 0px;
+}
+
+/*ORDERING PAGE*/
+.food-item-box-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.food-item-box {
+    background-color: rgba(0, 0, 0, 0.547);
+    width: 60vw;
+    height: 30vh;
+    margin: 2vw;
+    display: flex;
+    position: relative;
+    transform: scale(100%);
+    transition: all 0.3s ease-out;
+}
+
+.food-item-box:hover {
+    cursor: pointer;
+    transform: scale(105%);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.food-item-title {
+    color: white;
+    font-size: 200%;
+    
+}
+
+.food-item-flex-left {
+    width: 20%;
+}
+
+.food-item-flex-middle {
+    width: 55%;
+    margin-left: 5%;
+}
+
+.food-item-flex-right {
+    width: 20%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.food-item-img {
+    margin: 5%;
+}
+
+.food-item-description {
+    color: white;
+    font-size: 150%;
+}
+
+.food-item-price {
+    color: yellow;
+    font-size: 200%;
+    margin-right: 5%;;
+    padding: 0px;
+}

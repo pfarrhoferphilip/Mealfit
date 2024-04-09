@@ -36,7 +36,7 @@ if (isset($_SESSION['loggedin'])) {
                 <input class="login-button" type="submit" value="Anmelden">
             </div>
         </form>
-        <p class="register-text">Noch keine Account? <a class="register-link" href="./registerPage.php">Hier Registrieren</a></p>
+        <p class="register-text">Noch keinen Account? <a class="register-link" href="./registerPage.php">Hier Registrieren</a></p>
     </div>
 
 </body>

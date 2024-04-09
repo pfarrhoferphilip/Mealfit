@@ -2,7 +2,7 @@
 session_start();
 
 $_db_host = "localhost";
-$_db_datenbank = "foodonwings";
+$_db_datenbank = "mealfit";
 $_db_username = "webaccess";
 $_db_passwort = "access";
 
