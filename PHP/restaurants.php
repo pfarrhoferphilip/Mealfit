@@ -20,6 +20,9 @@ if ($_SESSION['loggedin'] == false) {
 
 <body>
     <div class="title-box">
+        <div onclick="window.open('shoppingCart.php', '_self')" class="shopping-cart">
+            <img src="./../Img/cart.png" alt="Warenkorb">
+        </div>
         <svg height="100" stroke="#ECB159" stroke-width="2" class="text-line" width="100%"><text x="50%"
                 dominant-baseline="middle" text-anchor="middle" y="50%">Restaurants</text></svg>
     </div>
@@ -32,7 +35,7 @@ if ($_SESSION['loggedin'] == false) {
     // Query to select restaurants
     $_db_host = "localhost";
     $_db_datenbank = "mealfit";
-    $_db_username = "webaccess";
+    $_db_username = "webaccess2";
     $_db_passwort = "access";
 
 

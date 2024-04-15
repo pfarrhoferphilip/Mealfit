@@ -279,3 +279,26 @@ input {
     margin-right: 5%;;
     padding: 0px;
 }
+
+.shopping-cart {
+    position: absolute;
+    width: 5%;
+    right: 2%;
+    top: 10%;
+    background-color: #ECB159;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(100%);
+    transition: all 0.3s ease-out;
+}
+
+.shopping-cart:hover {
+    cursor: pointer;
+    transform: scale(110%);
+}
+
+.shopping-cart img {
+    width: 70%;
+}

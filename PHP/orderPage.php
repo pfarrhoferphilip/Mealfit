@@ -15,7 +15,7 @@ if ($_SESSION['loggedin'] == false) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestellen</title>
     <link rel="stylesheet" href="./../Style/style.css">
-    <script src="./../JS/restaurants.js" defer></script>
+    <script src="./../JS/order.js" defer></script>
 </head>
 
 <body>
@@ -27,7 +27,7 @@ if ($_SESSION['loggedin'] == false) {
     // Query to select restaurants
     $_db_host = "localhost";
     $_db_datenbank = "mealfit";
-    $_db_username = "webaccess";
+    $_db_username = "webaccess2";
     $_db_passwort = "access";
 
 
@@ -45,6 +45,9 @@ if ($_SESSION['loggedin'] == false) {
     // Generating HTML for div box
     
     echo "<div class='title-box'>";
+    echo "<div onclick='openShoppingCart()' class='shopping-cart'>";
+    echo '<img src="./../Img/cart.png" alt="Warenkorb">';
+    echo "</div>";
     echo "<svg height='100' stroke='#ECB159' stroke-width='2' class='text-line' width='100%'><text x='50%' dominant-baseline='middle' text-anchor='middle' y='50%'>$name</text></svg>";
     echo '</div>';
 
@@ -55,12 +58,13 @@ if ($_SESSION['loggedin'] == false) {
         // Loop through each row of data
         while ($row = mysqli_fetch_assoc($result)) {
 
+            $id = $row['id'];
             $name = $row['name'];
             $description = $row['description'];
             $price = $row['price'];
             $image_url = $row['image_url'];
 
-            echo "<div class='food-item-box-container'>";
+            echo "<div onclick='addToCart($id)' class='food-item-box-container'>";
             echo "<div class='food-item-box'>";
             echo '<div class="food-item-flex-left">';
             echo "<img class='food-item-img' height='90%' src='./../Img/$image_url' alt='No Picture found'>";
