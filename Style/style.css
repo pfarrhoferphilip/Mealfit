@@ -83,6 +83,7 @@ input {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 1%;
 }
 
@@ -281,10 +282,10 @@ input {
 }
 
 .shopping-cart {
-    position: absolute;
+    position: fixed;
     width: 5%;
     right: 2%;
-    top: 10%;
+    top: 3%;
     background-color: #ECB159;
     border-radius: 50px;
     display: flex;
@@ -301,4 +302,69 @@ input {
 
 .shopping-cart img {
     width: 70%;
+}
+
+@keyframes notification-popup {
+    0% {
+        transform: scale(10%);
+        bottom: -5vh;
+    }
+
+    10% {
+        bottom: 2vh;
+        transform: scale(100%);
+    }
+
+    90% {
+        bottom: 2vh;
+        transform: scale(100%);
+    }
+
+    100% {
+        transform: scale(10%);
+        bottom: -5vh;
+    }
+}
+
+.notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    bottom: 2vh;
+    left: 40vw;
+    width: 20vw;
+    height: 10vh;
+    border-radius: 50px;
+    background-color: #00eaff;
+    animation: notification-popup 5s ease-in-out;
+    color: white;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    font-size: 150%;
+}
+
+/*RESPONSIVE*/
+/*FOR PHONE*/
+@media screen and (max-width: 800px) {
+
+    .login-button {
+        width: 70%;
+        margin-top: 40%;
+    }
+
+    .login-input {
+        width: 70%;
+        margin-top: 20%;
+    }
+
+    .notification {
+        width: 80vw;
+        height: 10vh;
+        left: 10vw;
+    }
 }

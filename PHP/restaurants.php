@@ -24,7 +24,7 @@ if ($_SESSION['loggedin'] == false) {
             <img src="./../Img/cart.png" alt="Warenkorb">
         </div>
         <svg height="100" stroke="#ECB159" stroke-width="2" class="text-line" width="100%"><text x="50%"
-                dominant-baseline="middle" text-anchor="middle" y="50%">Restaurants</text></svg>
+                dominant-baseline="middle" text-anchor="middle" y="50%" font-size="70px">Restaurants</text></svg>
     </div>
 
     <!--RESTAURENT DEMO-->

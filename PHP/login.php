@@ -30,7 +30,7 @@ if ($login_is_valid == true) {
     header("Location:./restaurants.php");
 } else {
     $_SESSION['loggedin'] = false;
-    header("Location:./loginPage.php");
+    header("Location:./loginPage.php?login=error&mail=$email");
 }
 
 ?>

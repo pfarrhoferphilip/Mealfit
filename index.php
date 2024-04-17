@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mealfit</title>
     <link rel="stylesheet" href="./Style/style.css">
+    <link rel="shortcut icon" href="./Img/logo.png" type="image/png">
 </head>
 
 <body>

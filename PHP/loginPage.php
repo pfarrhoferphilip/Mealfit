@@ -27,16 +27,32 @@ if (isset($_SESSION['loggedin'])) {
     <div id="login-box">
         <form action="./login.php">
             <div class="input-container">
-                <input placeholder="E-Mail" required type="email" name="e-mail" class="login-input" id="e-mail-input">
+                <?php
+                if (isset($_GET['mail'])) {
+                    $mail = $_GET['mail'];
+                    echo "<input value='$mail' required type='email' name='e-mail' class='login-input' id='e-mail-input'>";
+                } else {
+                    echo '<input placeholder="E-Mail" required type="email" name="e-mail" class="login-input" id="e-mail-input">';
+                }
+                ?>
             </div>
             <div class="input-container">
-                <input placeholder="Passwort" required type="password" name="password" class="login-input" id="password-input">
+                <input placeholder="Passwort" required type="password" name="password" class="login-input"
+                    id="password-input">
             </div>
+            <?php
+            if (isset($_GET['login'])) {
+                if ($_GET['login'] == "error") {
+                    echo "<p class='error-message'>E-Mail oder Passwort wurde nicht gefunden</p>";
+                }
+            }
+            ?>
             <div class="button-container">
                 <input class="login-button" type="submit" value="Anmelden">
             </div>
         </form>
-        <p class="register-text">Noch keinen Account? <a class="register-link" href="./registerPage.php">Hier Registrieren</a></p>
+        <p class="register-text">Noch keinen Account? <br><a class="register-link" href="./registerPage.php">Hier
+                Registrieren</a></p>
     </div>
 
 </body>

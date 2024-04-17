@@ -64,8 +64,8 @@ if ($_SESSION['loggedin'] == false) {
             $price = $row['price'];
             $image_url = $row['image_url'];
 
-            echo "<div onclick='addToCart($id)' class='food-item-box-container'>";
-            echo "<div class='food-item-box'>";
+            echo "<div class='food-item-box-container'>";
+            echo "<div onclick='addToCart($id)' class='food-item-box'>";
             echo '<div class="food-item-flex-left">';
             echo "<img class='food-item-img' height='90%' src='./../Img/$image_url' alt='No Picture found'>";
             echo '</div>';
@@ -93,6 +93,8 @@ if ($_SESSION['loggedin'] == false) {
         </div>
     </div>
     -->
+
+    
 
 </body>
 
