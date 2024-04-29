@@ -13,9 +13,15 @@ if ($_SESSION['loggedin'] == false) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warenkorb</title>
+    <title>Warenkorb - Mealtfit</title>
     <link rel="stylesheet" href="./../Style/style.css">
 </head>
+
+<script>
+    function openCheckout() {
+        window.open('./checkout.php', '_self');
+    }
+</script>
 
 <body>
 
@@ -34,8 +40,14 @@ if ($_SESSION['loggedin'] == false) {
 
     $conn = new mysqli($_db_host, $_db_username, $_db_passwort, $_db_datenbank);
 
-    if (isset($_SESSION['cart'])) {
+    //echo $_SESSION['current_restaurant'];
+
+    if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         $items = $_SESSION['cart'];
+
+        echo '<div class="button-container">';
+        echo '<button class="login-button" onclick="openCheckout()">Zum Checkout</button>';
+        echo '</div>';
 
         // Loop through each row of data
         foreach ($items as $item) {
@@ -66,7 +78,7 @@ if ($_SESSION['loggedin'] == false) {
             echo "</div>";
         }
     } else {
-        echo "<p class='food-item-title'>Warenkorb ist leer</p>";
+        echo "<p class='cart-noti'>Dein Warenkorb ist derzeit leer</p>";
     }
 
     ?>

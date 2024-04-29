@@ -1,7 +1,7 @@
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
-async function addToCart(id) {
-    const response = await fetch(`./../PHP/addItemToCart.php?id=${id}`);
+async function addToCart(id,restaurant_id) {
+    const response = await fetch(`./../PHP/addItemToCart.php?id=${id}&restaurant=${restaurant_id}`);
 
     let elemDiv = document.createElement('div');
     elemDiv.classList.add("notification");

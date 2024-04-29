@@ -39,6 +39,18 @@ input {
     display: flex;
 }
 
+.flex-width {
+    width: 100%;
+    display: flex;
+}
+
+.center-items {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title-box {
     position: relative;
     margin: 0%;
@@ -229,7 +241,7 @@ input {
 .food-item-box {
     background-color: rgba(0, 0, 0, 0.547);
     width: 60vw;
-    height: 30vh;
+    height: 31vh;
     margin: 2vw;
     display: flex;
     position: relative;
@@ -246,7 +258,12 @@ input {
 .food-item-title {
     color: white;
     font-size: 200%;
-    
+}
+
+.cart-noti {
+    color: white;
+    font-size: 400%;
+    text-align: center;
 }
 
 .food-item-flex-left {
@@ -279,6 +296,28 @@ input {
     font-size: 200%;
     margin-right: 5%;;
     padding: 0px;
+}
+
+.macros-box {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.macro {
+    margin-right: 5%;
+    color: white;
+}
+
+#filter {
+    background-color: #ECB159;
+    height: 5vh;
+    width: 7vw;
+    font-size: 150%;
+}
+
+.submit-button {
+    height: 5vh;
+    width: 7vw;
+    font-size: 150%;
 }
 
 .shopping-cart {

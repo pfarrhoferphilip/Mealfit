@@ -5,6 +5,13 @@ if ($_SESSION['loggedin'] == false) {
     header("Location:./loginPage.php");
 }
 
+if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+    echo "<script>
+    alert('Warenkorb wurde geleert');
+    </script>";
+}
+
 ?>
 
 <!DOCTYPE html>
