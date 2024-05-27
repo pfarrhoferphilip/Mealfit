@@ -27,9 +27,9 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
 
 <body>
     <div class="title-box">
-        <div onclick="window.open('shoppingCart.php', '_self')" class="shopping-cart">
+        <!-- <div onclick="window.open('shoppingCart.php', '_self')" class="shopping-cart">
             <img src="./../Img/cart.png" alt="Warenkorb">
-        </div>
+        </div> -->
         <svg height="100" stroke="#ECB159" stroke-width="2" class="text-line" width="100%"><text x="50%"
                 dominant-baseline="middle" text-anchor="middle" y="50%" font-size="70px">Restaurants</text></svg>
     </div>
@@ -48,7 +48,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
 
     $conn = new mysqli($_db_host, $_db_username, $_db_passwort, $_db_datenbank);
 
-    $sql = "SELECT * from restaurants";
+    $sql = "SELECT * from restaurants order by delivery_time";
     $result = $conn->query($sql);
 
     // Check if there are any results
