@@ -67,7 +67,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             echo "<div class='restaurant-box-container'>";
             echo "<div title='Jetzt bestellen!' onclick='openRestaurant($id)' class='restaurant-box'>";
             echo '<div class="restaurant-flex-left">';
-            echo "<img class='restaurant-img' height='90%' src='./../Img/$image_url' alt='No Logo found'>";
+            echo "<img class='restaurant-img' src='./../Img/$image_url' alt='No Logo found'>";
             echo '</div>';
             echo '<div class="restaurant-flex-middle">';
             echo "<p class='restaurant-title'>$name</p>";

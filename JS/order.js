@@ -27,7 +27,7 @@ function back() {
     window.open("./../PHP/restaurants.php", "_self");
 }
 
-window.onbeforeunload = function () {
-    if (cart_opened == false)
-        return 'Are you sure you want to leave?';
-};
+// window.onbeforeunload = function () {
+//     if (cart_opened == false)
+//         return 'Are you sure you want to leave?';
+// };

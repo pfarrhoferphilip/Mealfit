@@ -40,7 +40,7 @@ if ($_SESSION['loggedin'] == false) {
     if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         $items = $_SESSION['cart'];
 
-        echo '<div class="button-container">';
+        echo '<div class="button-container sticky-top">';
         echo '<button class="login-button" onclick="goBack()">Zurück</button>';
         echo '<button class="login-button" onclick="openCheckout()">Zur Kasse</button>';
         echo '</div>';
@@ -83,6 +83,9 @@ if ($_SESSION['loggedin'] == false) {
         echo "<h2 class='food-item-price text-center'>Gesamtpreis: $all_price_display €</h2>";
     } else {
         echo "<p class='cart-noti'>Dein Warenkorb ist derzeit leer</p>";
+        echo '<div class="button-container">';
+        echo '<button class="login-button" onclick="goBack()">Zurück</button>';
+        echo "</div>";
     }
 
     ?>

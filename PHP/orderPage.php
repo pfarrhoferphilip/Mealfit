@@ -16,6 +16,7 @@ if ($_SESSION['loggedin'] == false) {
     <title>Bestellen</title>
     <link rel="stylesheet" href="./../Style/style.css">
     <script src="./../JS/order.js" defer></script>
+    <link rel="shortcut icon" href="../Img/logo.png" type="image/png">
 </head>
 
 <body>
@@ -26,7 +27,11 @@ if ($_SESSION['loggedin'] == false) {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
     } else {
-        $id = $_SESSION['last_id'];
+        if (isset($_SESSION['last_id']) && !empty($_SESSION['last_id'])) {
+            $id = $_SESSION['last_id'];
+        } else {
+            header("Location:./restaurants.php");
+        }
     }
 
     $_SESSION['last_id'] = $id;
@@ -61,9 +66,23 @@ if ($_SESSION['loggedin'] == false) {
     echo "</div>";
     echo "<svg height='100' stroke='#ECB159' stroke-width='2' class='text-line' width='100%'><text x='50%' dominant-baseline='middle' text-anchor='middle' y='50%'>$name</text></svg>";
     echo '</div>';
-    echo "<div class='center-items'>";
+    echo "<div class='category-box'>";
+
+    $sql = "SELECT category from food_items where restaurant_id = " . $id . " group by category";
+    $result = $conn->query($sql);
+    if (mysqli_num_rows($result) > 0) {
+        // Loop through each row of data
+        while ($row = mysqli_fetch_assoc($result)) {
+            $cat = $row['category'];
+            echo "<a href='#$cat' class='category-button'>$cat</a>";
+        }
+    }
+
+    echo "</div>";
+
     $selectedFilter = isset($_GET['filter']) ? $_GET['filter'] : 'calories';
 
+    echo "<div style='margin-top: 1%;' class='center-items filter-box'>";
     echo "<form action='./orderPage.php' method='get'>";
     echo "<select onchange='this.form.submit()' name='filter' id='filter'>";
 
@@ -71,7 +90,8 @@ if ($_SESSION['loggedin'] == false) {
         'calories' => 'Kalorien',
         'protein DESC' => 'Protein',
         'carbs' => 'Kohlenhydrate',
-        'fat DESC' => 'Fett'
+        'fat' => 'Fett',
+        'price' => 'Preis'
     ];
 
     foreach ($options as $value => $label) {
@@ -86,53 +106,61 @@ if ($_SESSION['loggedin'] == false) {
 
     $sql = "";
     if (isset($_GET['filter'])) {
-    $sql = "SELECT * from food_items where restaurant_id = " . $id . " order by " . $_GET['filter'];
+        $sql = "SELECT * from food_items where restaurant_id = " . $id . " order by category, " . $_GET['filter'];
     } else {
-    $sql = "SELECT * from food_items where restaurant_id = " . $id . " order by calories";
+        $sql = "SELECT * from food_items where restaurant_id = " . $id . " order by category, calories";
     }
 
     $result = $conn->query($sql);
     $restaurant_id = $id;
 
+    $last_cat = "";
     if (mysqli_num_rows($result) > 0) {
-    // Loop through each row of data
-    while ($row = mysqli_fetch_assoc($result)) {
+        // Loop through each row of data
+        while ($row = mysqli_fetch_assoc($result)) {
 
-    $id = $row['id'];
-    $name = $row['name'];
-    $description = $row['description'];
-    $price = $row['price'];
-    $image_url = $row['image_url'];
-    $cal = $row["calories"];
-    $protein = $row['protein'];
-    $fat = $row['fat'];
-    $carbs = $row['carbs'];
+            $id = $row['id'];
+            $name = $row['name'];
+            $description = $row['description'];
+            $price = $row['price'];
+            $price_display = number_format($price, 2, ',');
+            $image_url = $row['image_url'];
+            $cal = $row["calories"];
+            $protein = $row['protein'];
+            $fat = $row['fat'];
+            $carbs = $row['carbs'];
+            $category = $row['category'];
 
-    echo "<div class='food-item-box-container'>";
-        echo "<div onclick='addToCart($id,$restaurant_id)' class='food-item-box'>";
+            if ($category != $last_cat) {
+                echo "<h2 id='$category' class='category-title'>$category</h2>";
+                $last_cat = $category;
+            }
+
+            echo "<div class='food-item-box-container'>";
+            echo "<div onclick='addToCart($id,$restaurant_id)' class='food-item-box'>";
             echo '<div class="food-item-flex-left">';
-                echo "<img class='food-item-img' height='90%' src='./../Img/$image_url' alt='No Picture found'>";
-                echo '</div>';
-            echo '<div class="food-item-flex-middle">';
-                echo "<p class='food-item-title'>$name</p>";
-                echo "<p class='food-item-description'>$description</p>";
-                echo "<div class='macros-box'>";
-                    echo "<div class='flex-width'>";
-                        echo "<p class='macro'>kcal: $cal kcal</p>";
-                        echo "<p class='macro'>Protein: $protein g</p>";
-                        echo "</div>";
-                    echo "<div class='flex-width'>";
-                        echo "<p class='macro'>Fett: $fat g</p>";
-                        echo "<p class='macro'>Carbs: $carbs KE</p>";
-                        echo "</div>";
-                    echo "</div>";
-                echo '</div>';
-            echo "<div class='food-item-flex-right'>";
-                echo "<p class='food-item-price'>$price €</p>";
-                echo "</div>";
+            echo "<img class='food-item-img' height='90%' src='./../Img/$image_url' alt='No Picture found'>";
             echo '</div>';
-        echo "</div>";
-    }
+            echo '<div class="food-item-flex-middle">';
+            echo "<p class='food-item-title'>$name</p>";
+            echo "<p class='food-item-description'>$description</p>";
+            echo "<div class='macros-box'>";
+            echo "<div class='flex-width'>";
+            echo "<p class='macro'><span class='macro-span'>Kalorien:</span> $cal kcal</p>";
+            echo "<p class='macro'><span class='macro-span'>Protein:</span> $protein g</p>";
+            echo "</div>";
+            echo "<div class='flex-width'>";
+            echo "<p class='macro'><span class='macro-span'>Fett:</span> $fat g</p>";
+            echo "<p class='macro'><span class='macro-span'>Kohlenhydrate:</span> $carbs KE</p>";
+            echo "</div>";
+            echo "</div>";
+            echo '</div>';
+            echo "<div class='food-item-flex-right'>";
+            echo "<p class='food-item-price'>$price_display €</p>";
+            echo "</div>";
+            echo '</div>';
+            echo "</div>";
+        }
     }
 
     ?>

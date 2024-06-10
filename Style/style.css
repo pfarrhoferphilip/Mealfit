@@ -25,6 +25,10 @@
 #8CB9BD
 https://colorhunt.co/palette/8cb9bdfefbf6ecb159b67352*/
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #8CB9BD;
     margin: 0%;
@@ -69,6 +73,33 @@ input {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)), url(./../Img/food_background.jpg);
     
+}
+
+.title-box-index {
+    position: relative;
+    margin: 0%;
+    padding: 3%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    color: white;
+    text-align: center;
+    bottom: 0%;
+    margin: 0%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.foot-link {
+    text-decoration: none;
+    color: #ECB159;
+    transition: all 0.3s ease-in-out;
+}
+
+.foot-link:hover {
+    color: #B67352;
 }
 
 #login-box {
@@ -127,6 +158,48 @@ input {
     cursor: pointer;
     border-radius: 40px;
     background-color: #B67352;
+}
+
+.sticky-top {
+    position: sticky;
+    z-index: 2;
+    top: 1%;
+}
+
+.category-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 1%;
+    z-index: 2;
+}
+
+.category-button {
+    position: relative;
+    text-align: center;
+    width: 15%;
+    height: 45px;
+    font-size: 200%;
+    border: black 3px solid;
+    background-color: #ECB159;
+    border-radius: 2px;
+    transition: all 0.2s ease-out;
+    text-decoration: none;
+    color: black;
+}
+
+.category-button:hover {
+    cursor: pointer;
+    border-radius: 40px;
+    background-color: #B67352;
+}
+
+.filter-box {
+    position: sticky;
+    top: 8%;
+    z-index: 2;
 }
 
 .register-text {
@@ -222,6 +295,7 @@ input {
 
 .restaurant-img {
     margin: 5%;
+    height: 90%;
 }
 
 .restaurant-rating {
@@ -314,16 +388,38 @@ input {
 }
 
 .macro {
+    width: 50%;
     margin-right: 5%;
     font-size: 125%;
     color: white;
+    text-align: center;
+}
+
+.macro-span {
+    color: #ECB159;
+}
+
+.category-title {
+    color: #ECB159;
+    font-size: 500%;
+    text-align: center;
+    text-shadow: 1px 1px black;
 }
 
 #filter {
     background-color: #ECB159;
     height: 5vh;
-    width: 7vw;
+    width: 10vw;
     font-size: 150%;
+    text-align: center;
+    border: black 3px solid;
+    border-radius: 5px;
+    transition: all 0.3s ease-out;
+}
+
+#filter:hover {
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 .submit-button {
@@ -502,14 +598,61 @@ input {
     align-items: center;
 }
 
-#loading-box {
+.purchase-box-container {
     display: flex;
     width: 100%;
-    height: 100vh;
+    align-items: center;
     justify-content: center;
+}
+
+.purchase-box {
+    color: white;
+    font-size: 200%;
+}
+
+.purchase-title {
+    font-size: 150%;
+}
+
+.purchase-highlight {
+    color: #ECB159;
+    text-shadow: 1px 1px black;
+}
+
+.invisible {
+    display: none;
+}
+
+#loading-box {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    display: flex;
+    width: 20%;
+    height: 20vh;
+    justify-content: space-evenly;
     align-items: center;
     color: #ECB159;
     text-shadow: 1px 1px black;
+}
+
+#index-body {
+    background-image: url(../Img/collage2.jpg);
+    background-size: 180%;
+    background-repeat: repeat;
+    background-position: 0% 0%;
+    
+    animation: background-move 30s linear infinite alternate;
+}
+
+@keyframes background-move {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 190% 190%;
+    }
 }
 
 @keyframes loading-ball-anim {
